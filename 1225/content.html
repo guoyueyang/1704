@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	题目:<input type="text" name="a" id="biaoti"><br>
+	内容:<input type="text" name="b" id="neirong"><br>
+	<button id="fabu">发布</button>
+	<div id="wenzhang">
+		<h1 id="title"></h1>
+		<p id="cont"></p>
+	</div>
+	<script src="ajax.js"></script>
+	<script>
+		fabu.onclick = function(){
+			ajax({
+				url:'http://localhost:1111',
+				type:'post',
+				data:{
+					biaoti:biaoti.value,
+					neirong:neirong.value
+				},
+				async:true,
+				success:function(data){
+					var date=JSON.parse(data);
+					title.innerHTML = date.biaoti;
+					cont.innerHTML = date.neirong;
+				},
+				error:function(){
+
+				}
+			})
+	}
+
+	</script>
+</body>
+</html>
